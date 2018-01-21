@@ -15,7 +15,6 @@ class Ship : public GameObject {
 		void moveLeft();
 		void moveDownwards();
 		void moveRight();
-		// void shoot();
 
 		Ship& operator=(Ship const& rhs);
 	protected:

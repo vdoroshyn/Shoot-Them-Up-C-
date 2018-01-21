@@ -1,23 +1,23 @@
-#include "Enemy.hpp"
+#include "Bullet.hpp"
 
-Enemy::Enemy() {
+Bullet::Bullet() {
 }
 
-Enemy::Enemy(int xPos, int yPox, int health) {
+Bullet::Bullet(int xPos, int yPox, int health) {
 	this->_xPos = xPos;
 	this->_yPos = yPox;
 	this->_health = health;
 }
 
-Enemy::Enemy(Enemy const& src) : GameObject(src) {
+Bullet::Bullet(Bullet const& src) : GameObject(src) {
 }
 
-Enemy::~Enemy() {
+Bullet::~Bullet() {
 }
 
 //operators
 
-Enemy& Enemy::operator=(Enemy const& rhs) {
+Bullet& Bullet::operator=(Bullet const& rhs) {
 	if (this != &rhs) {
 		this->_xPos = rhs.getX();
 		this->_yPos = rhs.getY();

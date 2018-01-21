@@ -19,7 +19,7 @@ class GameObject {
 		void setY(int y);
 		void setHP(int health);
 
-		bool isDead();
+		bool isAlive();
 
 		GameObject& operator=(GameObject const& rhs);
 	protected:
@@ -30,3 +30,19 @@ class GameObject {
 };
 
 #endif
+
+// void Battlefield::moveBullets() {
+// 	for (int i = 0; i < maxNumberOfBullets; ++i) {
+// 		if (this->_bullets[i] != NULL) {
+// 			if (this->_map[this->_bullets[i]->getY()][this->_bullets[i]->getX() + 1] == 2) {
+// 				this->_map[this->_bullets[i]->getY()][this->_bullets[i]->getX()] = 0;
+// 				delete this->_bullets[i];
+// 				this->_bullets[i] = NULL;
+// 				return;
+// 			}
+// 			this->_map[this->_bullets[i]->getY()][this->_bullets[i]->getX()] = 0;
+// 			this->_bullets[i]->setX(this->_bullets[i]->getX() + 1);
+// 			this->_map[this->_bullets[i]->getY()][this->_bullets[i]->getX()] = 3;
+// 		}
+// 	}
+// }

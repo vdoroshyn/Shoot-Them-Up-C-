@@ -5,6 +5,7 @@ CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 OBJECTS = main.o \
 			Ship.o \
 			Enemy.o \
+			Bullet.o \
 			GameObject.o \
 			Battlefield.o \
 
@@ -31,6 +32,9 @@ Ship.o : Ship.cpp
 
 Enemy.o : Enemy.cpp
 	$(CC) $(CPPFLAGS) -c Enemy.cpp Enemy.hpp
+
+Bullet.o : Bullet.cpp
+	$(CC) $(CPPFLAGS) -c Bullet.cpp Bullet.hpp
 
 GameObject.o : GameObject.cpp
 	$(CC) $(CPPFLAGS) -c GameObject.cpp GameObject.hpp

@@ -4,11 +4,13 @@
 #include <ncurses.h>
 #include "Ship.hpp"
 #include "Enemy.hpp"
+#include "Bullet.hpp"
 #include <unistd.h>
 
 int const yMap = 40;
 int const xMap = 120;
-int const maxNumberOfEnemies = 3;
+int const maxNumberOfEnemies = 51;
+int const maxNumberOfBullets = 5;
 
 class Battlefield {
     public:
@@ -20,15 +22,21 @@ class Battlefield {
         void mapToScreen();
         void nullEnemiesArray();
         void generateEnemy();
-        void moveEnemies();
+        void moveEnemies(Ship& player);
         void destroyEnemy();
+        void nullBulletsArray();
+        void generateBullet(Ship& player);
+        void moveBullets();
+        void destroyBullet();
         void keyPressAction(Ship& player);
+        void removeDelay();
         void colorInitialization();
         void topAndBottomBorders(int y, int x, int limit);
         void leftAndRightBorders(int y, int x, int limit);
 
         int _map[yMap][xMap];
-        Enemy* _enemies[3];
+        Enemy* _enemies[maxNumberOfEnemies];
+        Bullet* _bullets[maxNumberOfBullets];
 
         Battlefield& operator=(Battlefield const& rhs);
     protected:

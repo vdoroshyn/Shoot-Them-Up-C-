@@ -43,8 +43,8 @@ void GameObject::setHP(int health) {
 
 //methods
 
-bool GameObject::isDead() {
-	if (this->getHP() == 0) {
+bool GameObject::isAlive() {
+	if (this->getHP() != 0) {
 		return 1;
 	}
 	return 0;

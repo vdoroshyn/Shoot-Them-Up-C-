@@ -45,10 +45,6 @@ void Ship::moveRight() {
 	this->setX(this->getX() + 1);
 }
 
-// void Ship::shoot() {
-
-// }
-
 //operators
 
 Ship& Ship::operator=(Ship const& rhs) {

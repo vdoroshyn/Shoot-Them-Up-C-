@@ -9,9 +9,7 @@ class Enemy : public GameObject {
 		Enemy(int xPos, int yPox, int health);
 		Enemy(Enemy const& src);
 		~Enemy();
-
-		void move();
-
+		
 		Enemy& operator=(Enemy const& rhs);
 	protected:
 	private:
