@@ -3,7 +3,7 @@
 Battlefield::Battlefield() {
 	nullEnemiesArray();
 	nullBulletsArray();
-	this->_ammo = 5;
+	this->_ammo = maxNumberOfBullets;
 	this->_score = 0;
 	initscr();
 	curs_set(0);

@@ -1,1 +1,1 @@
-# Shoot-Them-Up-C-
+My first c++ game 1 week into the language (ncurses library for visualization). Even though it might not be perfect, I still consider it a success.

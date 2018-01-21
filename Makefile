@@ -1,6 +1,6 @@
 NAME = ft_retro
 CC = clang++
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
+CPPFLAGS = -Wall -Wextra -Werror
 
 OBJECTS = main.o \
 			Ship.o \
