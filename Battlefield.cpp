@@ -3,6 +3,8 @@
 Battlefield::Battlefield() {
 	nullEnemiesArray();
 	nullBulletsArray();
+	this->_ammo = 5;
+	this->_score = 0;
 	initscr();
 	curs_set(0);
 	cbreak();
@@ -29,10 +31,10 @@ Battlefield::~Battlefield() {
 			delete this->_bullets[i];
 		}
 	}
-	
+
 	endwin();
 	system("clear");
-	std::cout << "Game Over!" << std::endl;
+	std::cout << "Game Over! Points scored: " << this->_score << ". Better luck next time!" << std::endl;
 }
 
 //methods
@@ -47,6 +49,11 @@ void Battlefield::initializeMap() {
 
 void Battlefield::mapToScreen()
 {
+	this->topAndBottomBorders(0, 0, 122);
+	this->topAndBottomBorders(42, 0, 123);
+	this->leftAndRightBorders(0, 0, 42);
+	this->leftAndRightBorders(0, 122, 42);
+	
 	int i = 0;
 	int y = 1;
 
@@ -79,6 +86,8 @@ void Battlefield::mapToScreen()
 		++i;
 		++y;
 	}
+	mvprintw(yMap + 3, 0, "Score: %d", this->_score);
+	mvprintw(yMap + 3, xMap - 4, "Ammo: %d", this->_ammo);
 	refresh();
 }
 
@@ -87,6 +96,10 @@ void Battlefield::nullEnemiesArray() {
 	for (int i = 0; i < maxNumberOfEnemies; ++i) {
 		this->_enemies[i] = NULL;
 	}
+}
+
+void Battlefield::playerInitalPosition(Ship& player) {
+	this->_map[player.getY()][player.getX()] = 1;
 }
 
 void Battlefield::generateEnemy() {
@@ -120,6 +133,8 @@ void Battlefield::moveEnemies(Ship& player) {
 							this->_map[bulletY][bulletX] = 0;
 							delete this->_bullets[j];
 							this->_bullets[j] = NULL;
+							this->_score += 1;
+							this->_ammo += 1;
 							break;
 						}
 					}
@@ -166,6 +181,7 @@ void Battlefield::generateBullet(Ship& player) {
 
 			this->_bullets[i] = new Bullet(x + 1, y, 1);
 			this->_map[y][x + 1] = 3;
+			this->_ammo -= 1;
 			return;
 		}
 	}
@@ -188,6 +204,7 @@ void Battlefield::moveBullets() {
 							this->_map[enemyY][enemyX] = 0;
 							delete this->_enemies[j];
 							this->_enemies[j] = NULL;
+							this->_score += 1;
 							break;
 						}
 					}
@@ -196,6 +213,7 @@ void Battlefield::moveBullets() {
 				this->_map[bulletY][bulletX] = 0;
 				delete this->_bullets[i];
 				this->_bullets[i] = NULL;
+				this->_ammo += 1;
 			} else {
 				this->_map[bulletY][bulletX] = 0;
 				this->_bullets[i]->setX(bulletX + 1);
@@ -211,6 +229,7 @@ void Battlefield::destroyBullet() {
 			this->_map[this->_bullets[i]->getY()][this->_bullets[i]->getX()] = 0;
 			delete this->_bullets[i];
 			this->_bullets[i] = NULL;
+			this->_ammo += 1;
 		}
 	}
 }
@@ -287,6 +306,8 @@ Battlefield& Battlefield::operator=(Battlefield const& rhs) {
 				this->_map[i][j] = rhs._map[i][j];
 			}
 		}
+		this->_score = rhs._score;
+		this->_ammo = rhs._ammo;
 	}
 	return *this;
 }

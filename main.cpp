@@ -11,20 +11,8 @@ int main() {
 
 	Battlefield screen;
 	Ship player(1, 20, 1);
-	
-	screen._map[player.getY()][player.getX()] = 1;
-	screen.topAndBottomBorders(0, 0, 122);
-	screen.topAndBottomBorders(42, 0, 123);
-	screen.leftAndRightBorders(0, 0, 42);
-	screen.leftAndRightBorders(0, 122, 42);
-	screen.mapToScreen();
-	 //    move(5, 5);
 
-	// std::string text = "Hello world!";
-	// for(int i = 0; i < int(text.size()); i++) {
-	//     addch(text[i]);
-	//     addch(' ');
-	// }
+	screen.mapToScreen();
 	while (player.isAlive()) {
 		screen.keyPressAction(player);
 		screen.generateEnemy();
